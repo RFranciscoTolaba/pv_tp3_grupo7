@@ -1,4 +1,4 @@
-import { useState } from 'react'
+/*import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -116,6 +116,43 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
+  )
+}
+
+export default App
+*/
+import ListaProyectos from "./components/ListaProyectos"
+
+function App() {
+
+  const proyectos = [
+
+    {
+      id: 1,
+      titulo: "Sistema Escolar",
+      categoria: "Educación",
+      estado: "Activo"
+    },
+
+    {
+      id: 2,
+      titulo: "Biblioteca Virtual",
+      categoria: "Web",
+      estado: "Pendiente"
+    }
+
+  ]
+
+  return (
+
+    <div>
+
+      <h1>Lista de Proyectos</h1>
+
+      <ListaProyectos proyectos={proyectos} />
+
+    </div>
+
   )
 }
 
