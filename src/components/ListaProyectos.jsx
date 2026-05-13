@@ -2,11 +2,11 @@ function ListaProyectos({ proyectos, eliminarProyecto }) {
 
     return (
 
-        <section>
+        <section  className="contenedor-main">
 
             {proyectos.map((proyecto) => (
 
-                <div key={proyecto.id}>
+                <div key={proyecto.id} className="Cont-Proy">
 
                     <h2>{proyecto.titulo}</h2>
 
