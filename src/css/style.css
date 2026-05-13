@@ -22,7 +22,7 @@
 }
 
 body {
-  background-color: var(--bg-primary-color-color);
+  background-color: var(--bg-primary-color);
   color: var(--secondary-text-color);
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
@@ -30,12 +30,6 @@ body {
   font-style: normal;
   display: grid;
   margin: 0px;
-}
-
-h1 {
-  color: var(--primary-text-color);
-  padding: 10px;
-  font-size: 35px;
 }
 
 header {
@@ -48,6 +42,25 @@ header {
   position: sticky;
   top: 0;
 }
+
+
+header div {
+  display: flex;
+  justify-content: center;
+}
+header h1 {
+  color: var(--primary-text-color);
+  padding: 10px;
+  font-size: 35px;
+}
+header img {
+  margin-left: 20px;
+  width:60px;  
+  height: auto;
+  object-fit: contain;
+}
+
+
 
 .Navbar ul {
   display: flex;
@@ -83,18 +96,20 @@ header {
   color: rgb(255, 255, 255);
 }
 
-.search-div {
+.searchDiv {
   display: flex;
   align-items:center;
-  justify-content: right;
+  justify-content: flex-end;
   margin: 0px;
   margin-top: 5px;
   padding-right: 15px;
   border-radius: var(--border-radius);
+  width: 100%;              
 }
 
-.search-input {
+.searchInput {
   height: 20px;
+  width: 250px;
   padding: 10px;
   font-size: 15px;
   border: none;
@@ -104,7 +119,7 @@ header {
   font-family: inherit;
 }
 
-.search-buton {
+.searchBtn {
   background-color: var(--tarjet-primary-color);
   border: none;
   padding: 10px;
@@ -113,17 +128,17 @@ header {
   justify-content: center;
 }
 
-.search-buton:hover {
+.searchBtn:hover {
   background-color:rgb(163, 192, 61) ; 
 }
 
-.search-buton img {
-  width: 20px;  
-  height:max-content;
+.searchBtn img{
+  width: 20px;       
+  height: 20px;      
   object-fit: contain;
+  display: block;   
 }
-
-.registration-div{
+.registrationDiv{
     max-width: 600px;
     margin: 30px ;
     background-color: var(--bg-secondary-color); 
@@ -133,25 +148,25 @@ header {
     box-shadow: var(--tarjet-shadow);
 }
 
-.registration-div h2 {
+.registrationDiv h2 {
     margin-bottom: 25px;
     border-bottom: 2px solid var(--bg-button-color);
     padding-bottom: 10px;
 }
 
-.input-group {
+.inputGroup {
     display: flex;
     flex-direction: column;
     margin: 12px;
 }
 
-.input-group label {
+.inputGroup label {
     margin: 5px;
     font-weight: 550;
 }
 
-.input-group input, 
-.input-group select {
+.inputGroup input, 
+.inputGroup select {
     width: 100%;
     padding: 12px;
     background-color: var(--bg-secondary-color);
@@ -163,13 +178,13 @@ header {
 }
 
 
-.form-actions {
+.formActions {
     display: flex;
     justify-content: flex-end; 
     margin-top: 30px;
 }
 
-.btn-save {
+.btnSave {
     background-color: rgba(160, 160, 160, 0.583);
     color: var(--primary-text-color);
     padding: 12px 15px;
@@ -181,53 +196,13 @@ header {
     box-shadow: var(--tarjet-shadow);
 }
 
-.btn-save:hover {
+.btnSave:hover {
     color: var(--secondary-text-color);
     background-color: rgb(207, 237, 98);
     transform: scale(1.08);
 }
 
-/*
-.filtro {
-  display: block;
-  align-items: center;
-  text-align: right;
-  font-size: 18px;
-  font-weight: bold;
-  padding-right: 15px;
-}
 
-.filtro div select {
-  background-color: rgb(74, 94, 92);
-  color: var(--primary-text-color);
-  font-size: 18px;
-  font-weight: bold;
-  height: 30px;
-  border-color: rgb(17, 17, 17);
-  border-radius: 7px;
-  transition:var(--transition);
-}
-
-.filtro div select:link,
-.filtro div select:visited {
-  background-color: rgb(74, 94, 92);
-  color: rgb(248, 249, 247);
-}
-
-.filtro div select:hover,
-.filtro div select:active {
-  background-color: rgb(53, 65, 64);
-  text-shadow: 0 2px 6px rgb(102, 96, 90);
-  color: rgb(255, 255, 255);
-  box-shadow: 0 3px 5px rgb(93, 93, 93);
-  transform: scale(1.05);
-}
-
-.filtro div select:focus {
-  background-color: var(--secondary-hover);
-  color: rgb(17, 17, 17);
-}
-*/
 img {
   display: block;
   width: 300px;
@@ -261,21 +236,21 @@ h2 {
   font-size: 25px;
 }
 
-.ButtonsAction {
+.buttonsAction {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-top: 15px;
 }
-._button {
+.btn {
   background-color: var(--bg-button-color);
 
   transition:var(--transition);
 }
 
-._button:link,
-._button:visited {
+.btn:link,
+.btn:visited {
   display: inline-block;
   color: var(--button-text-color);
   padding: 10px 15px;
@@ -283,15 +258,15 @@ h2 {
   border-radius: 13px;
 }
 
-._button:hover,
-._button:active {
+.btn:hover,
+.btn:active {
   background-color: var(--primary-hover);
   color: rgb(255, 255, 255);
   box-shadow: 0 3px 3px rgb(69, 83, 16);
   transform: scale(1.08);
 }
 
-.btn-delete {
+.btnDelete {
   display: flex;
 
   background-color: var(--bg-button-color);
@@ -306,13 +281,13 @@ h2 {
   transition: var(--transition);
 }
 
-.btn-delete:link,
-.btn-delete:visited {
+.btnDelete:link,
+.btnDelete:visited {
   color: var(--secondary-text-color);
 }
 
-.btn-delete:hover,
-.btn-delete:active {
+.btnDelete:hover,
+.btnDelete:active {
   background-color: rgb(243, 50, 50);
   color: var(--primary-text-color);
   transform: scale(1.08);

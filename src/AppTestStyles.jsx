@@ -1,10 +1,9 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
+//import reactLogo from "./assets/react.svg";
+//import viteLogo from "./assets/vite.svg";
+//import heroImg from "./assets/hero.png";
 
 import Header from "./components/Header";
-//import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import "./css/style.css";
 import lupa from "./assets/img/lupa.png";
@@ -12,24 +11,20 @@ const AppTestStyles = () => {
   return (
     <>
       <Header />
-      {/* <Nav/> */}
 
       <main>
         <section>
-          <div className="search-div">
-            <input
-              type="text"
-              placeholder="Buscar proyecto"
-              className="search-input"
-            />
-            <button type="submit" className="search-buton">
-              <img src={lupa} alt="lupa" />{" "}
+          <div className="searchDiv">
+            <input name="inputSearch" type="text" placeholder="Buscar proyecto" className="searchInput"/>
+            
+            <button type="submit" className="searchBtn">
+              <img src={lupa} alt="lupa" />
             </button>
           </div>
-          <section className="registration-div">
+          <section className="registrationDiv">
             <h2>Cargar Nuevo Proyecto</h2>
             <form className="project-form">
-              <div className="input-group">
+              <div className="inputGroup">
                 <label htmlFor="title">Título:</label>
                 <input
                   type="text"
@@ -39,7 +34,7 @@ const AppTestStyles = () => {
                 />
               </div>
 
-              <div className="input-group">
+              <div className="inputGroup">
                 <label htmlFor="category">Categoría:</label>
                 <select id="category" name="category">
                   <option value="Gestion">Gestión</option>
@@ -49,14 +44,14 @@ const AppTestStyles = () => {
                 </select>
               </div>
 
-              <div className="input-group">
+              <div className="inputGroup">
                 <label htmlFor="status">Estado:</label>
                 <select id="status" name="status">
                   <option value="En curso">En curso</option>
                   <option value="Finalizado">Finalizado</option>
                 </select>
               </div>
-              <div className="form-actions">  <button type="submit" className="btn-save">
+              <div className="formActions">  <button type="submit" className="btn-save">
                 Guardar Proyecto
               </button></div>
 
@@ -77,12 +72,12 @@ const AppTestStyles = () => {
               <p>
                 <b>Categoria: </b>Gestion
               </p>
-              <div className="ButtonsAction">
-                <a href="detalle.html" className="_button">
+              <div className="buttonsAction">
+                <a href="detalle.html" className="btn">
                   {" "}
                   Ver Detalle
                 </a>
-                <button className="btn-delete">Eliminar</button>
+                <button className="btnDelete">Eliminar</button>
               </div>
             </article>
             <article>
@@ -95,12 +90,12 @@ const AppTestStyles = () => {
               <p>
                 <b>Categoria: </b>Educacion
               </p>
-              <div className="ButtonsAction">
-                <a href="detalle.html" className="_button">
+              <div className="buttonsAction">
+                <a href="detalle.html" className="btn">
                   {" "}
                   Ver Detalle
                 </a>
-                <button className="btn-delete">Eliminar</button>
+                <button className="btnDelete">Eliminar</button>
               </div>
             </article>
             <article>
@@ -113,12 +108,12 @@ const AppTestStyles = () => {
               <p>
                 <b>Categoria: </b>Educacion
               </p>
-              <div className="ButtonsAction">
-                <a href="detalle.html" className="_button">
+              <div className="buttonsAction">
+                <a href="detalle.html" className="btn">
                   {" "}
                   Ver Detalle
                 </a>
-                <button className="btn-delete">Eliminar</button>
+                <button className="btnDelete">Eliminar</button>
               </div>
             </article>
             <article>
@@ -134,12 +129,12 @@ const AppTestStyles = () => {
               <p>
                 <b>Categoria: </b>Gestion
               </p>
-              <div className="ButtonsAction">
-                <a href="detalle.html" className="_button">
+              <div className="buttonsAction">
+                <a href="detalle.html" className="btn">
                   {" "}
                   Ver Detalle
                 </a>
-                <button className="btn-delete">Eliminar</button>
+                <button className="btnDelete">Eliminar</button>
               </div>
             </article>
             <article>
@@ -152,12 +147,12 @@ const AppTestStyles = () => {
               <p>
                 <b>Categoria: </b>Control, Acceso
               </p>
-              <div className="ButtonsAction">
-                <a href="detalle.html" className="_button">
+              <div className="buttonsAction">
+                <a href="detalle.html" className="btn">
                   {" "}
                   Ver Detalle
                 </a>
-                <button className="btn-delete">Eliminar</button>
+                <button className="btnDelete">Eliminar</button>
               </div>
             </article>
           </div>

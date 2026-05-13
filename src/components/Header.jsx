@@ -1,5 +1,6 @@
-import { useState } from 'react';
-
+import { useState } from "react";
+import Nav from "./Nav";
+import logo from "../assets/img/logo.png";
 const Header = () => {
   const [count, setCount] = useState(0);
 
@@ -7,29 +8,18 @@ const Header = () => {
     <>
       <header>
         <div>
-          <h1>
-            Proyectos
-          </h1>
+          <div>
+            <img src={logo} alt="Logo equipo" />
+          </div>
+          <div>
+            <h1>Nombre euipo</h1>
+          </div>
         </div>
-        <nav className="Navbar">
-          <ul>
-            <li>
-              <a href="index.html">Inicio</a>
-            </li>
-            <li>
-              <a href="proyectos.html">Proyectos</a>
-            </li>
-            <li>
-              <a href="detalle.html">Detalle</a>
-            </li>
-            <li>
-              <a href="perfil.html">Perfil</a>
-            </li>
-          </ul>
-        </nav>
+
+        <Nav />
       </header>
     </>
   );
-}
+};
 
 export default Header;
