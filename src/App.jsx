@@ -1,5 +1,6 @@
 import { useState } from "react"
 import ListaProyectos from "./components/ListaProyectos"
+import './App.css'
 
 function App() {
 
@@ -56,10 +57,9 @@ function App() {
 
   return (
 
-    <div>
+  <div>
 
-      <h1>Lista de Proyectos</h1>
-
+<div className="filtro">
       <input
         type="text"
         placeholder="Título"
@@ -84,12 +84,13 @@ function App() {
       <button onClick={agregarProyecto}>
         Agregar Proyecto
       </button>
-
+</div>
+<div>
       <ListaProyectos
         proyectos={proyectos}
         eliminarProyecto={eliminarProyecto}
       />
-
+</div>
     </div>
 
   )
