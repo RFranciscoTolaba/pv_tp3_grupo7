@@ -1,0 +1,302 @@
+:root {
+  --primary-text-color: #fffffe;
+  --secondary-text-color: rgb(53, 58, 57);
+  --p-color: #bdb79f;
+
+  --primary-hover: rgb(106, 110, 110);
+  --secondary-hover: rgb(207, 237, 98);
+  --button-shadow: 0px 8px 10px 2px #342411;
+  --bg-button-color: rgb(58, 63, 39);
+  --button-text-color: rgb(248, 249, 247);
+  --border-radius: 10px;
+
+  --bg-primary-color: rgb(227, 234, 242);
+  --bg-secondary-color: rgb(53, 58, 57);
+
+  --tarjet-shadow: 0 4px 6px #605e54;
+  --tarjet-primary-color: rgb(196, 233, 67);
+  --tarjet-secondary-color: rgb(196, 233, 67);
+  --tarjet-border-radius: 10px;
+
+  --transition: all 0.4s ease;
+}
+
+body {
+  background-color: var(--bg-primary-color);
+  color: var(--secondary-text-color);
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 550;
+  font-style: normal;
+  display: grid;
+  margin: 0px;
+}
+
+header {
+  display: flex;
+  background-color: var(--bg-secondary-color);
+  justify-content: space-between;
+  height: 90px;
+  padding: 0px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+
+header div {
+  display: flex;
+  justify-content: center;
+}
+header h1 {
+  color: var(--primary-text-color);
+  padding: 10px;
+  font-size: 35px;
+}
+header img {
+  margin-left: 20px;
+  width:60px;  
+  height: auto;
+  object-fit: contain;
+}
+
+
+
+.Navbar ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.Navbar ul li a {
+  display: block;
+  height: 90px;
+  align-content: center;
+  font-size: 24px;
+  padding: 0px 25px;
+  transition: var(--transition);
+}
+
+.Navbar ul li a:link,
+.Navbar ul li a:visited {
+  background-color: var(--bg-secondary-color);
+  color: rgb(240, 240, 227);
+  text-align: center;
+  text-decoration: none;
+
+}
+
+.Navbar ul li a:hover,
+.Navbar ul li a:active {
+  background-color: var(--primary-hover);
+  font-size: 25px;
+  text-shadow: 0 2px 6px rgb(173, 161, 148);
+  color: rgb(255, 255, 255);
+}
+
+.searchDiv {
+  display: flex;
+  align-items:center;
+  justify-content: flex-end;
+  margin-top: 5px;
+  padding-right: 15px;
+  border-radius: var(--border-radius);
+  width: 100%;              
+}
+
+.searchInput {
+  height: 20px;
+  width: 250px;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: var(--bg-secondary-color); 
+  color: var(--p-color);
+  font-family: inherit;
+}
+
+.searchBtn {
+  background-color: var(--tarjet-primary-color);
+  border: none;
+  margin-right: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchBtn:hover {
+  background-color:rgb(163, 192, 61) ; 
+}
+
+.searchBtn img{
+  width: 20px;       
+  height: 20px;      
+  object-fit: contain;
+  display: block;   
+}
+.registrationDiv{
+    max-width: 600px;
+    margin: 30px ;
+    background-color: var(--bg-secondary-color); 
+    border-radius: var(--border-radius);
+    color: var(--primary-text-color);
+    padding: 30px;
+    box-shadow: var(--tarjet-shadow);
+}
+
+.registrationDiv h2 {
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--bg-button-color);
+    padding-bottom: 10px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    margin: 12px;
+}
+
+.inputGroup label {
+    margin: 5px;
+    font-weight: 550;
+}
+
+.inputGroup input, 
+.inputGroup select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-secondary-color);
+    border: 2px solid #5b5a5a;
+    border-radius: 8px;
+    color: var(--primary-text-color);
+    font-family: inherit;
+    outline: none;
+}
+
+
+.formActions {
+    display: flex;
+    justify-content: flex-end; 
+    margin-top: 30px;
+}
+
+.btnSave {
+    background-color: rgba(160, 160, 160, 0.583);
+    color: var(--primary-text-color);
+    padding: 12px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    font-size: 15px;
+    transition: var(--transition);
+    box-shadow: var(--tarjet-shadow);
+}
+
+.btnSave:hover {
+    color: var(--secondary-text-color);
+    background-color: rgb(207, 237, 98);
+    transform: scale(1.08);
+}
+
+
+img {
+  display: block;
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tarjet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px;
+}
+
+article {
+  width: 500px;
+  padding: 10px;
+  background-color: var(--tarjet-primary-color);
+  border: 4px solid;
+  border-color: rgb(165, 205, 19);
+  border-radius: var(--tarjet-border-radius);
+  box-shadow: var(--tarjet-shadow);
+  margin: 15px;
+}
+
+h2 {
+  text-decoration-line: underline;
+  text-decoration-color: rgb(100, 100, 100);
+  text-decoration-style: solid;
+  font-size: 25px;
+}
+
+.buttonsAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+}
+.btn {
+  background-color: var(--bg-button-color);
+
+  transition:var(--transition);
+}
+
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  color: var(--button-text-color);
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 13px;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: var(--primary-hover);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 3px 3px rgb(69, 83, 16);
+  transform: scale(1.08);
+}
+
+.btnDelete {
+  display: flex;
+
+  background-color: var(--bg-button-color);
+  color: rgb(243, 50, 50);
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 13px;
+  border: 1px solid rgb(163, 163, 163);
+  padding: 10px 15px;
+  text-decoration: none;
+
+  transition: var(--transition);
+}
+
+.btnDelete:link,
+.btnDelete:visited {
+  color: var(--secondary-text-color);
+}
+
+.btnDelete:hover,
+.btnDelete:active {
+  background-color: rgb(243, 50, 50);
+  color: var(--primary-text-color);
+  transform: scale(1.08);
+}
+
+footer {
+  background-color: var(--bg-secondary-color);
+  color: var(--primary-text-color);
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+}
