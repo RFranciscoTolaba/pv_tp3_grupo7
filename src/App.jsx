@@ -1,118 +1,117 @@
-import { useState } from "react"
-import ListaProyectos from "./components/ListaProyectos"
-<<<<<<< HEAD
-=======
-import './App.css'
->>>>>>> origin/rama-lucas
+import { useState, useEffect } from "react";
+import "./css/style.css";
+import {
+  obtenerProyectos,
+  agregarProyecto,
+  eliminarProyecto,
+  buscarProyectos,
+} from "./services/proyectoService";
+import ListaProyectos from "./components/ListaProyectos";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import lupa from "./assets/img/lupa.png";
 
 function App() {
+  const [proyectos, setProyectos] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
+  const [nuevoProyecto, setNuevoProyecto] = useState({
+    titulo: "",
+    categoria: "",
+    estado: "Activo",
+  });
 
-  const [proyectos, setProyectos] = useState([
+  useEffect(() => {
+    setProyectos(obtenerProyectos());
+  }, []);
 
-    {
-      id: 1,
-      titulo: "Sistema Escolar",
-      categoria: "Educación",
-      estado: "Activo"
-    },
+  const Agregar = () => {
+    if (!nuevoProyecto.titulo) return;
+    agregarProyecto(nuevoProyecto);
+    setProyectos(obtenerProyectos());
+    setNuevoProyecto({ titulo: "", categoria: "", estado: "Activo" });
+  };
 
-    {
-      id: 2,
-      titulo: "Biblioteca Virtual",
-      categoria: "Web",
-      estado: "Pendiente"
-    }
+  const Eliminar = (id) => {
+    eliminarProyecto(id);
+    setProyectos(obtenerProyectos());
+  };
 
-  ])
-
-  const [titulo, setTitulo] = useState("")
-  const [categoria, setCategoria] = useState("")
-  const [estado, setEstado] = useState("")
-
-  const eliminarProyecto = (id) => {
-
-    const nuevosProyectos = proyectos.filter(
-      (proyecto) => proyecto.id !== id
-    )
-
-    setProyectos(nuevosProyectos)
-
-  }
-
-  const agregarProyecto = () => {
-
-    const nuevoProyecto = {
-
-      id: proyectos.length + 1,
-      titulo: titulo,
-      categoria: categoria,
-      estado: estado
-
-    }
-
-    setProyectos([...proyectos, nuevoProyecto])
-
-    setTitulo("")
-    setCategoria("")
-    setEstado("")
-
-  }
+  const proyectosVisibles = buscarProyectos(busqueda);
+  
 
   return (
+    <>
+      <Header />
 
-<<<<<<< HEAD
-    <div>
+      <div className="searchDiv">
+        <input
+          name="inputSearch"
+          type="text"
+          placeholder="Buscar proyecto"
+          className="searchInput"
+          onChange={(e) => setBusqueda(e.target.value)}
+        />
+      </div>
 
-      <h1>Lista de Proyectos</h1>
+      <div>
+        <div className="registrationDiv">
+          <h2>Cargar Nuevo Proyecto</h2>
+          <div className="inputGroup">
+            <label htmlFor="title">Título:</label>
+            <input
+              id="title"
+              name="title"
+              type="text"
+              placeholder="Título"
+              value={nuevoProyecto.titulo}
+              onChange={(e) =>
+                setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })
+              }
+            />
+          </div>
+          <div className="inputGroup">
+            <label htmlFor="category">Categoria:</label>
+            <input
+              id="category"
+              name="category"
+              type="text"
+              placeholder="Categoría"
+              value={nuevoProyecto.categoria}
+              onChange={(e) =>
+                setNuevoProyecto({
+                  ...nuevoProyecto,
+                  categoria: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className="inputGroup">
+            <label htmlFor="status">Estado:</label>
 
-=======
-  <div>
-
-<div className="filtro">
->>>>>>> origin/rama-lucas
-      <input
-        type="text"
-        placeholder="Título"
-        value={titulo}
-        onChange={(e) => setTitulo(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Categoría"
-        value={categoria}
-        onChange={(e) => setCategoria(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Estado"
-        value={estado}
-        onChange={(e) => setEstado(e.target.value)}
-      />
-
-      <button onClick={agregarProyecto}>
-        Agregar Proyecto
-      </button>
-<<<<<<< HEAD
-
-=======
-</div>
-<div>
->>>>>>> origin/rama-lucas
-      <ListaProyectos
-        proyectos={proyectos}
-        eliminarProyecto={eliminarProyecto}
-      />
-<<<<<<< HEAD
-
-=======
-</div>
->>>>>>> origin/rama-lucas
-    </div>
-
-  )
-
+            <select
+              id="status"
+              name="status"
+              onChange={(e) =>
+                setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })
+              }
+            >
+              <option value="En curso">Activo</option>
+              <option value="Pendiente">Pausado</option>
+              <option value="Finalizado">Compeltado</option>
+              <option value="Finalizado">En revision</option>
+            </select>
+          </div>
+          <button onClick={Agregar} className="btnSave">
+            Agregar Proyecto
+          </button>
+        </div>
+        <div>
+          <ListaProyectos proyectos={proyectosVisibles} onEliminar={Eliminar} />
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;
