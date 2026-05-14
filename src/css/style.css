@@ -218,7 +218,7 @@ img {
   padding: 50px;
 }
 
-article {
+.Cont-Proy {
   width: 500px;
   padding: 10px;
   background-color: var(--tarjet-primary-color);
@@ -266,7 +266,7 @@ h2 {
   transform: scale(1.08);
 }
 
-.btnDelete {
+button {
   display: flex;
 
   background-color: var(--bg-button-color);
@@ -281,13 +281,13 @@ h2 {
   transition: var(--transition);
 }
 
-.btnDelete:link,
-.btnDelete:visited {
+button:link,
+button:visited {
   color: var(--secondary-text-color);
 }
 
-.btnDelete:hover,
-.btnDelete:active {
+button:hover,
+button:active {
   background-color: rgb(243, 50, 50);
   color: var(--primary-text-color);
   transform: scale(1.08);

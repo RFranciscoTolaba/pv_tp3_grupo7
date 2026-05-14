@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { obtenerProyectos } from '../services/proyectoService';
-
-const ListaProyectos = () => {
-    const [proyectos, setProyectos] = useState(obtenerProyectos());
-
-    return (
-        <main className="main-content">
-            <h2>Gestión de Proyectos</h2>
-            
-            <div className="proyectos-container">
-                {/* Integrante 4 tomará este estado 'proyectos' y usar un .map() 
-                  justo aquí debajo para renderizar las Cards o la tabla.
-                */}
-            </div>
-        </main>
-    );
+const ListaProyectos = ({ proyectos, onEliminar }) => {
+  return (
+    <section className="tarjet">
+      {proyectos.map((proyecto) => (
+        <article key={proyecto.id} className="Cont-Proy">
+          <h2>{proyecto.titulo}</h2>
+          <p>Categoría: {proyecto.categoria}</p>
+          <p>Estado: {proyecto.estado}</p>
+          <div className="ButtonsAction">
+            <button className="btn-delete" onClick={() => onEliminar(proyecto.id)}>
+              Eliminar
+            </button>
+          </div>
+        </article>
+      ))}
+    </section>
+  );
 };
 
 export default ListaProyectos;

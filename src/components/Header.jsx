@@ -12,7 +12,7 @@ const Header = () => {
             <img src={logo} alt="Logo equipo" />
           </div>
           <div>
-            <h1>Nombre equipo</h1>
+            <h1>Grupo 7</h1>
           </div>
         </div>
 
