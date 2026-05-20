@@ -1,32 +1,25 @@
-function ListaProyectos({ proyectos, eliminarProyecto }) {
+import ProyectoCard from "./ProyectoCard";
 
-    return (
+const ListaProyectos = ({ proyectos, onEliminar }) => {
 
-        <section  className="contenedor-main">
+  return (
 
-            {proyectos.map((proyecto) => (
+    <section className="tarjet">
 
-                <div key={proyecto.id} className="Cont-Proy">
+      {proyectos.map((proyecto) => (
 
-                    <h2>{proyecto.titulo}</h2>
+        <ProyectoCard
+          key={proyecto.id}
+          proyecto={proyecto}
+          onEliminar={onEliminar}
+        />
 
-                    <p>Categoría: {proyecto.categoria}</p>
+      ))}
 
-                    <p>Estado: {proyecto.estado}</p>
+    </section>
 
-                    <button
-                        onClick={() => eliminarProyecto(proyecto.id)}
-                    >
-                        Eliminar
-                    </button>
+  );
 
-                </div>
+};
 
-            ))}
-
-        </section>
-
-    )
-}
-
-export default ListaProyectos
+export default ListaProyectos;
