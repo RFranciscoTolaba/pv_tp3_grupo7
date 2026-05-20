@@ -9,7 +9,6 @@ import {
 import ListaProyectos from "./components/ListaProyectos";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import lupa from "./assets/img/lupa.png";
 
 function App() {
   const [proyectos, setProyectos] = useState([]);
@@ -18,6 +17,13 @@ function App() {
     titulo: "",
     categoria: "",
     estado: "Activo",
+    descripcion: "",
+    recursos: {
+      pdf: "",
+      drive: "",
+      github: "",
+    },
+    equipo: "",
   });
 
   useEffect(() => {
@@ -26,9 +32,24 @@ function App() {
 
   const Agregar = () => {
     if (!nuevoProyecto.titulo) return;
-    agregarProyecto(nuevoProyecto);
+
+    const equipoArray = nuevoProyecto.equipo
+      .split(",")
+      .map((item) => {
+        const [nombre, rol] = item.split(":").map((s) => s.trim());
+        return { nombre: nombre || item.trim(), rol: rol || "Integrante" };
+      });
+
+    agregarProyecto({ ...nuevoProyecto, equipo: equipoArray });
     setProyectos(obtenerProyectos());
-    setNuevoProyecto({ titulo: "", categoria: "", estado: "Activo" });
+    setNuevoProyecto({
+      titulo: "",
+      categoria: "",
+      estado: "Activo",
+      descripcion: "",
+      recursos: { pdf: "", drive: "", github: "" },
+      equipo: "",
+    });
   };
 
   const Eliminar = (id) => {
@@ -37,7 +58,6 @@ function App() {
   };
 
   const proyectosVisibles = buscarProyectos(busqueda);
-  
 
   return (
     <>
@@ -56,6 +76,7 @@ function App() {
       <div>
         <div className="registrationDiv">
           <h2>Cargar Nuevo Proyecto</h2>
+
           <div className="inputGroup">
             <label htmlFor="title">Título:</label>
             <input
@@ -69,8 +90,9 @@ function App() {
               }
             />
           </div>
+
           <div className="inputGroup">
-            <label htmlFor="category">Categoria:</label>
+            <label htmlFor="category">Categoría:</label>
             <input
               id="category"
               name="category"
@@ -78,37 +100,116 @@ function App() {
               placeholder="Categoría"
               value={nuevoProyecto.categoria}
               onChange={(e) =>
-                setNuevoProyecto({
-                  ...nuevoProyecto,
-                  categoria: e.target.value,
-                })
+                setNuevoProyecto({ ...nuevoProyecto, categoria: e.target.value })
               }
             />
           </div>
+
           <div className="inputGroup">
             <label htmlFor="status">Estado:</label>
-
             <select
               id="status"
               name="status"
+              value={nuevoProyecto.estado}
               onChange={(e) =>
                 setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })
               }
             >
-              <option value="En curso">Activo</option>
-              <option value="Pendiente">Pausado</option>
-              <option value="Finalizado">Compeltado</option>
-              <option value="Finalizado">En revision</option>
+              <option value="Activo">Activo</option>
+              <option value="Pausado">Pausado</option>
+              <option value="Completado">Completado</option>
+              <option value="En revisión">En revisión</option>
             </select>
           </div>
+
+          <div className="inputGroup">
+            <label htmlFor="descripcion">Descripción:</label>
+            <textarea
+              id="descripcion"
+              name="descripcion"
+              placeholder="Descripción del proyecto (mínimo dos párrafos)"
+              value={nuevoProyecto.descripcion}
+              onChange={(e) =>
+                setNuevoProyecto({ ...nuevoProyecto, descripcion: e.target.value })
+              }
+            />
+          </div>
+
+          <div className="inputGroup">
+            <label htmlFor="recursoPdf">Recurso PDF:</label>
+            <input
+              id="recursoPdf"
+              name="recursoPdf"
+              type="text"
+              placeholder="URL del PDF"
+              value={nuevoProyecto.recursos.pdf}
+              onChange={(e) =>
+                setNuevoProyecto({
+                  ...nuevoProyecto,
+                  recursos: { ...nuevoProyecto.recursos, pdf: e.target.value },
+                })
+              }
+            />
+          </div>
+
+          <div className="inputGroup">
+            <label htmlFor="recursoDrive">Recurso Drive:</label>
+            <input
+              id="recursoDrive"
+              name="recursoDrive"
+              type="text"
+              placeholder="URL de Drive"
+              value={nuevoProyecto.recursos.drive}
+              onChange={(e) =>
+                setNuevoProyecto({
+                  ...nuevoProyecto,
+                  recursos: { ...nuevoProyecto.recursos, drive: e.target.value },
+                })
+              }
+            />
+          </div>
+
+          <div className="inputGroup">
+            <label htmlFor="recursoGithub">Recurso GitHub:</label>
+            <input
+              id="recursoGithub"
+              name="recursoGithub"
+              type="text"
+              placeholder="URL de GitHub"
+              value={nuevoProyecto.recursos.github}
+              onChange={(e) =>
+                setNuevoProyecto({
+                  ...nuevoProyecto,
+                  recursos: { ...nuevoProyecto.recursos, github: e.target.value },
+                })
+              }
+            />
+          </div>
+
+          <div className="inputGroup">
+            <label htmlFor="equipo">Equipo:</label>
+            <input
+              id="equipo"
+              name="equipo"
+              type="text"
+              placeholder="Ej: Juan Pérez: Frontend, Ana García: Backend"
+              value={nuevoProyecto.equipo}
+              onChange={(e) =>
+                setNuevoProyecto({ ...nuevoProyecto, equipo: e.target.value })
+              }
+            />
+          </div>
+
           <button onClick={Agregar} className="btnSave">
             Agregar Proyecto
           </button>
         </div>
+
         <div>
           <ListaProyectos proyectos={proyectosVisibles} onEliminar={Eliminar} />
         </div>
       </div>
+
       <Footer />
     </>
   );
