@@ -95,6 +95,7 @@ function App() {
                   name="title"
                   type="text"
                   placeholder="Título"
+                  required
                   value={nuevoProyecto.titulo}
                   onChange={(e) =>
                     setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })
@@ -109,6 +110,7 @@ function App() {
                   name="category"
                   type="text"
                   placeholder="Categoría"
+                  required
                   value={nuevoProyecto.categoria}
                   onChange={(e) =>
                     setNuevoProyecto({ ...nuevoProyecto, categoria: e.target.value })
@@ -121,6 +123,7 @@ function App() {
                 <select
                   id="status"
                   name="status"
+                  required
                   value={nuevoProyecto.estado}
                   onChange={(e) =>
                     setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })
@@ -138,6 +141,7 @@ function App() {
                 <textarea
                   id="descripcion"
                   name="descripcion"
+                  required
                   placeholder="Descripción del proyecto (mínimo dos párrafos)"
                   value={nuevoProyecto.descripcion}
                   onChange={(e) =>
@@ -151,7 +155,8 @@ function App() {
                 <input
                   id="recursoPdf"
                   name="recursoPdf"
-                  type="text"
+                  type="url"
+                  required
                   placeholder="URL del PDF"
                   value={nuevoProyecto.recursos.pdf}
                   onChange={(e) =>
@@ -168,7 +173,8 @@ function App() {
                 <input
                   id="recursoDrive"
                   name="recursoDrive"
-                  type="text"
+                  type="url"
+                  required
                   placeholder="URL de Drive"
                   value={nuevoProyecto.recursos.drive}
                   onChange={(e) =>
@@ -185,7 +191,8 @@ function App() {
                 <input
                   id="recursoGithub"
                   name="recursoGithub"
-                  type="text"
+                  type="url"
+                  required
                   placeholder="URL de GitHub"
                   value={nuevoProyecto.recursos.github}
                   onChange={(e) =>
@@ -203,11 +210,13 @@ function App() {
                   id="equipo"
                   name="equipo"
                   type="text"
+                  required
                   placeholder="Ej: Juan Pérez: Frontend, Ana García: Backend"
                   value={nuevoProyecto.equipo}
                   onChange={(e) =>
                     setNuevoProyecto({ ...nuevoProyecto, equipo: e.target.value })
                   }
+                  
                 />
               </div>
 

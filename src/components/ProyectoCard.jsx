@@ -1,48 +1,30 @@
-const ProyectoCard = ({ proyecto, onEliminar,onVerDetalle }) => {
+const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
+  const { titulo, categoria, estado, id } = proyecto;
 
-    const {
-        titulo,
-        categoria,
-        estado,
-        id
-    } = proyecto;
+  return (
+    <article className="Cont-Proy">
+      <h2>{titulo}</h2>
 
-    return (
+      <p>
+        <b>Categoría:</b> {categoria}
+      </p>
 
-        <article className="Cont-Proy">
+      <p>
+        <b>Estado:</b> {estado}
+      </p>
 
-            <h2>{titulo}</h2>
+      <div className="buttonsAction">
+        <button className="btn" onClick={() => onVerDetalle(proyecto)}>
+          Ver Detalle
+        </button>
+        
 
-            <p>
-                <b>Categoría:</b> {categoria}
-            </p>
-
-            <p>
-                <b>Estado:</b> {estado}
-            </p>
-
-            <div className="ButtonsAction">
-
-                <button
-                    className="btn-delete"
-                    onClick={() => onEliminar(id)}
-                >
-                    Eliminar
-                </button>
-
-                <button 
-                    className="btn-detail"
-                    onClick={()=>onVerDetalle(proyecto)}
-                >
-                    Ver Detalle
-                </button>
-
-            </div>
-
-        </article>
-
-    );
-
+        <button className="btn-delete" onClick={() => onEliminar(id)}>
+          Eliminar
+        </button>
+      </div>
+    </article>
+  );
 };
 
 export default ProyectoCard;

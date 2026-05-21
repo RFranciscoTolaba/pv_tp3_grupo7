@@ -167,7 +167,8 @@ header img {
 }
 
 .inputGroup input, 
-.inputGroup select {
+.inputGroup select,
+.inputGroup textarea {
     width: 100%;
     padding: 12px;
     background-color: var(--bg-secondary-color);
@@ -251,18 +252,15 @@ h2 {
   margin-top: 15px;
 }
 .btn {
-  background-color: var(--bg-button-color);
-
-  transition:var(--transition);
-}
-.detalle-proyecto{
-  background-color: var(--tarjet-primary-color);
-  border: 2px solid rgb(165, 205, 19);
-  border-width: 5px;
-  border-radius: 15px;
-  padding: 40px;
-  margin:30px auto;
-  max-width: 800px;
+    background-color: rgb(97, 97, 97);
+    color: var(--primary-text-color);
+    padding: 10px 15px;
+    border: 1px solid rgb(163, 163, 163);
+    font-size: 15px;
+    border-radius: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: var(--transition);
 
 }
 
@@ -274,6 +272,27 @@ h2 {
   text-decoration: none;
   border-radius: 13px;
 }
+
+.btn:hover,
+.btn:active {
+  background-color: rgb(153, 153, 153);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 3px 3px rgb(69, 83, 16);
+  transform: scale(1.08);
+}
+
+.detalle-proyecto{
+  background-color: var(--tarjet-primary-color);
+  border: 2px solid rgb(165, 205, 19);
+  border-width: 5px;
+  border-radius: 15px;
+  padding: 40px;
+  margin:30px auto;
+  max-width: 800px;
+
+}
+
+
 .recursos-links{
   display: flex;
   justify-content: center;
@@ -284,22 +303,16 @@ h2 {
 }
 ._button {
   text-decoration: none; 
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: 5px; 
   background-color: rgb(53, 58, 57);
   color: white;
   font-weight: bold;
 }
 
-.btn:hover,
-.btn:active {
-  background-color: var(--primary-hover);
-  color: rgb(255, 255, 255);
-  box-shadow: 0 3px 3px rgb(69, 83, 16);
-  transform: scale(1.08);
-}
 
-button {
+
+.btn-delete {
   display: flex;
 
   background-color: var(--bg-button-color);
@@ -310,19 +323,19 @@ button {
   border: 1px solid rgb(163, 163, 163);
   padding: 10px 15px;
   text-decoration: none;
-
   transition: var(--transition);
 }
 
-button:link,
-button:visited {
+.btn-delete:link,
+.btn-delete:visited {
   color: var(--secondary-text-color);
 }
 
-button:hover,
-button:active {
+.btn-delete:hover,
+.btn-delete:active {
   background-color: rgb(243, 50, 50);
   color: var(--primary-text-color);
+  box-shadow: 0 3px 3px rgb(69, 83, 16);
   transform: scale(1.08);
 }
 
