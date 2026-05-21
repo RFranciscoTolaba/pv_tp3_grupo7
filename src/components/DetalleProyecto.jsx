@@ -7,7 +7,7 @@ const DetalleProyecto = ({ proyecto,onVolver }) => {
 
   return (
     <section className="detalle-proyecto">
-      <button className="btn-volver" onClick={onVolver}>
+      <button className="_button" onClick={onVolver}>
         Volver al listado
       </button>
       <h2>{titulo}</h2>
