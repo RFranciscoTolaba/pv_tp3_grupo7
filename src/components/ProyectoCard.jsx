@@ -1,4 +1,4 @@
-const ProyectoCard = ({ proyecto, onEliminar }) => {
+const ProyectoCard = ({ proyecto, onEliminar,onVerDetalle }) => {
 
     const {
         titulo,
@@ -30,7 +30,10 @@ const ProyectoCard = ({ proyecto, onEliminar }) => {
                     Eliminar
                 </button>
 
-                <button className="btn-detail">
+                <button 
+                    className="btn-detail"
+                    onClick={()=>onVerDetalle(proyecto)}
+                >
                     Ver Detalle
                 </button>
 

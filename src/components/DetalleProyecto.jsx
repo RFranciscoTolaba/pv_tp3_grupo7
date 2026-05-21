@@ -1,4 +1,4 @@
-const DetalleProyecto = ({ proyecto }) => {
+const DetalleProyecto = ({ proyecto,onVolver }) => {
 /*   if (!proyecto) {
     return <p className="no-project">Debe seleccionar un proyecto para ver su correspondiente detalle</p>;
   } */
@@ -7,6 +7,9 @@ const DetalleProyecto = ({ proyecto }) => {
 
   return (
     <section className="detalle-proyecto">
+      <button className="btn-volver" onClick={onVolver}>
+        Volver al listado
+      </button>
       <h2>{titulo}</h2>
       
 
