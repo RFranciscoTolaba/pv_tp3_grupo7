@@ -9,10 +9,12 @@ import {
 import ListaProyectos from "./components/ListaProyectos";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import DetalleProyecto from "./components/DetalleProyecto";
 
 function App() {
   const [proyectos, setProyectos] = useState([]);
   const [busqueda, setBusqueda] = useState("");
+  const [proyectoSeleccionado,setProyectoSeleccionado] = useState(null);
   const [nuevoProyecto, setNuevoProyecto] = useState({
     titulo: "",
     categoria: "",
@@ -62,157 +64,175 @@ function App() {
   return (
     <>
       <Header />
-
-      <div className="searchDiv">
-        <input
-          name="inputSearch"
-          type="text"
-          placeholder="Buscar proyecto"
-          className="searchInput"
-          onChange={(e) => setBusqueda(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <div className="registrationDiv">
-          <h2>Cargar Nuevo Proyecto</h2>
-
-          <div className="inputGroup">
-            <label htmlFor="title">Título:</label>
-            <input
-              id="title"
-              name="title"
-              type="text"
-              placeholder="Título"
-              value={nuevoProyecto.titulo}
-              onChange={(e) =>
-                setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })
-              }
-            />
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="category">Categoría:</label>
-            <input
-              id="category"
-              name="category"
-              type="text"
-              placeholder="Categoría"
-              value={nuevoProyecto.categoria}
-              onChange={(e) =>
-                setNuevoProyecto({ ...nuevoProyecto, categoria: e.target.value })
-              }
-            />
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="status">Estado:</label>
-            <select
-              id="status"
-              name="status"
-              value={nuevoProyecto.estado}
-              onChange={(e) =>
-                setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })
-              }
-            >
-              <option value="Activo">Activo</option>
-              <option value="Pausado">Pausado</option>
-              <option value="Completado">Completado</option>
-              <option value="En revisión">En revisión</option>
-            </select>
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="descripcion">Descripción:</label>
-            <textarea
-              id="descripcion"
-              name="descripcion"
-              placeholder="Descripción del proyecto (mínimo dos párrafos)"
-              value={nuevoProyecto.descripcion}
-              onChange={(e) =>
-                setNuevoProyecto({ ...nuevoProyecto, descripcion: e.target.value })
-              }
-            />
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="recursoPdf">Recurso PDF:</label>
-            <input
-              id="recursoPdf"
-              name="recursoPdf"
-              type="text"
-              placeholder="URL del PDF"
-              value={nuevoProyecto.recursos.pdf}
-              onChange={(e) =>
-                setNuevoProyecto({
-                  ...nuevoProyecto,
-                  recursos: { ...nuevoProyecto.recursos, pdf: e.target.value },
-                })
-              }
-            />
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="recursoDrive">Recurso Drive:</label>
-            <input
-              id="recursoDrive"
-              name="recursoDrive"
-              type="text"
-              placeholder="URL de Drive"
-              value={nuevoProyecto.recursos.drive}
-              onChange={(e) =>
-                setNuevoProyecto({
-                  ...nuevoProyecto,
-                  recursos: { ...nuevoProyecto.recursos, drive: e.target.value },
-                })
-              }
-            />
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="recursoGithub">Recurso GitHub:</label>
-            <input
-              id="recursoGithub"
-              name="recursoGithub"
-              type="text"
-              placeholder="URL de GitHub"
-              value={nuevoProyecto.recursos.github}
-              onChange={(e) =>
-                setNuevoProyecto({
-                  ...nuevoProyecto,
-                  recursos: { ...nuevoProyecto.recursos, github: e.target.value },
-                })
-              }
-            />
-          </div>
-
-          <div className="inputGroup">
-            <label htmlFor="equipo">Equipo:</label>
-            <input
-              id="equipo"
-              name="equipo"
-              type="text"
-              placeholder="Ej: Juan Pérez: Frontend, Ana García: Backend"
-              value={nuevoProyecto.equipo}
-              onChange={(e) =>
-                setNuevoProyecto({ ...nuevoProyecto, equipo: e.target.value })
-              }
-            />
-          </div>
-
-          <button onClick={Agregar} className="btnSave">
-            Agregar Proyecto
-          </button>
+      {proyectoSeleccionado ? (
+        <div className="detalleContainer">
+          <DetalleProyecto
+            proyecto={proyectoSeleccionado}
+            onVolver={() => setProyectoSeleccionado(null)}
+          />
         </div>
+      ) : (
+        <>
 
-        <div>
-          <ListaProyectos proyectos={proyectosVisibles} onEliminar={Eliminar} />
-        </div>
-      </div>
+          <div className="searchDiv">
+            <input
+              name="inputSearch"
+              type="text"
+              placeholder="Buscar proyecto"
+              className="searchInput"
+              onChange={(e) => setBusqueda(e.target.value)}
+            />
+          </div>
 
+          <div>
+            <div className="registrationDiv">
+              <h2>Cargar Nuevo Proyecto</h2>
+
+              <div className="inputGroup">
+                <label htmlFor="title">Título:</label>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  placeholder="Título"
+                  value={nuevoProyecto.titulo}
+                  onChange={(e) =>
+                    setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="category">Categoría:</label>
+                <input
+                  id="category"
+                  name="category"
+                  type="text"
+                  placeholder="Categoría"
+                  value={nuevoProyecto.categoria}
+                  onChange={(e) =>
+                    setNuevoProyecto({ ...nuevoProyecto, categoria: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="status">Estado:</label>
+                <select
+                  id="status"
+                  name="status"
+                  value={nuevoProyecto.estado}
+                  onChange={(e) =>
+                    setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })
+                  }
+                >
+                  <option value="Activo">Activo</option>
+                  <option value="Pausado">Pausado</option>
+                  <option value="Completado">Completado</option>
+                  <option value="En revisión">En revisión</option>
+                </select>
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="descripcion">Descripción:</label>
+                <textarea
+                  id="descripcion"
+                  name="descripcion"
+                  placeholder="Descripción del proyecto (mínimo dos párrafos)"
+                  value={nuevoProyecto.descripcion}
+                  onChange={(e) =>
+                    setNuevoProyecto({ ...nuevoProyecto, descripcion: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="recursoPdf">Recurso PDF:</label>
+                <input
+                  id="recursoPdf"
+                  name="recursoPdf"
+                  type="text"
+                  placeholder="URL del PDF"
+                  value={nuevoProyecto.recursos.pdf}
+                  onChange={(e) =>
+                    setNuevoProyecto({
+                      ...nuevoProyecto,
+                      recursos: { ...nuevoProyecto.recursos, pdf: e.target.value },
+                    })
+                  }
+                />
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="recursoDrive">Recurso Drive:</label>
+                <input
+                  id="recursoDrive"
+                  name="recursoDrive"
+                  type="text"
+                  placeholder="URL de Drive"
+                  value={nuevoProyecto.recursos.drive}
+                  onChange={(e) =>
+                    setNuevoProyecto({
+                      ...nuevoProyecto,
+                      recursos: { ...nuevoProyecto.recursos, drive: e.target.value },
+                    })
+                  }
+                />
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="recursoGithub">Recurso GitHub:</label>
+                <input
+                  id="recursoGithub"
+                  name="recursoGithub"
+                  type="text"
+                  placeholder="URL de GitHub"
+                  value={nuevoProyecto.recursos.github}
+                  onChange={(e) =>
+                    setNuevoProyecto({
+                      ...nuevoProyecto,
+                      recursos: { ...nuevoProyecto.recursos, github: e.target.value },
+                    })
+                  }
+                />
+              </div>
+
+              <div className="inputGroup">
+                <label htmlFor="equipo">Equipo:</label>
+                <input
+                  id="equipo"
+                  name="equipo"
+                  type="text"
+                  placeholder="Ej: Juan Pérez: Frontend, Ana García: Backend"
+                  value={nuevoProyecto.equipo}
+                  onChange={(e) =>
+                    setNuevoProyecto({ ...nuevoProyecto, equipo: e.target.value })
+                  }
+                />
+              </div>
+
+              <button onClick={Agregar} className="btnSave">
+                Agregar Proyecto
+              </button>
+            </div>
+
+            <div>
+              <ListaProyectos 
+                proyectos={proyectosVisibles} 
+              onEliminar={Eliminar} 
+              onVerDetalle={setProyectoSeleccionado}
+              />
+            </div>
+          </div>
+        </>
+      )}
       <Footer />
     </>
   );
 }
+
+      
+
+    
 
 export default App;
