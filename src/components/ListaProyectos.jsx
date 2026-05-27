@@ -1,18 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import ProyectoCard from "./ProyectoCard";
 
 import RegistroActividad from "./RegistroActividad";
 
-const ListaProyectos = ({ proyectos, onEliminar, onVerDetalle }) => {
+const ListaProyectos = ({ proyectos, totalProyectos, onEliminar, onVerDetalle }) => {
 
   const [fechaActualizacion, setFechaActualizacion] = useState(null);
 
+  const estaMontado = useRef(false);
+
   useEffect(() => {
+
+    if(!estaMontado.current) {
+      estaMontado.current = true;
+      return;
+    }
 
     setFechaActualizacion(new Date());
 
-  }, [proyectos]);
+  }, [totalProyectos]);
 
   return (
 
