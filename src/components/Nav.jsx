@@ -1,17 +1,32 @@
+import { Nav as BsNav } from "react-bootstrap";
 
 const Nav = () => {
-    return (
-        <nav className="Navbar">
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Detalle</a></li>
-                <li><a href="#">Perfil</a></li>
-            </ul>
-        </nav>
 
-    )
-}
+  return (
+
+    <BsNav className="ms-auto">
+
+      <BsNav.Link href="/" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
+        Inicio
+      </BsNav.Link>
+
+      <BsNav.Link href="#" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
+        Proyectos
+      </BsNav.Link>
+
+      <BsNav.Link href="#" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
+        Detalle
+      </BsNav.Link>
+
+      <BsNav.Link href="#" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
+        Perfil
+      </BsNav.Link>
+
+    </BsNav>
+
+  );
+
+};
+
 export default Nav;
-
 
