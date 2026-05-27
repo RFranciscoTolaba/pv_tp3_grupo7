@@ -1,6 +1,18 @@
+import { useState, useEffect } from "react";
+
 import ProyectoCard from "./ProyectoCard";
 
-const ListaProyectos = ({ proyectos, onEliminar,onVerDetalle }) => {
+import RegistroActividad from "./RegistroActividad";
+
+const ListaProyectos = ({ proyectos, onEliminar, onVerDetalle }) => {
+
+  const [fechaActualizacion, setFechaActualizacion] = useState(null);
+
+  useEffect(() => {
+
+    setFechaActualizacion(new Date());
+
+  }, [proyectos]);
 
   return (
 
@@ -16,6 +28,12 @@ const ListaProyectos = ({ proyectos, onEliminar,onVerDetalle }) => {
         />
 
       ))}
+
+      {fechaActualizacion && (
+
+        <RegistroActividad fecha={fechaActualizacion} />
+
+      )}
 
     </section>
 
