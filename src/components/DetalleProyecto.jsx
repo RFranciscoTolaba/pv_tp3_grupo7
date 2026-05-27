@@ -105,3 +105,4 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
 };
 
 export default DetalleProyecto;
+
