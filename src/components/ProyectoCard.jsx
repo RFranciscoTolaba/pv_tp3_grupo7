@@ -67,3 +67,4 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
 };
 
 export default ProyectoCard;
+
