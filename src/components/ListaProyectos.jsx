@@ -1,6 +1,6 @@
 import ProyectoCard from "./ProyectoCard";
 
-const ListaProyectos = ({ proyectos, onEliminar }) => {
+const ListaProyectos = ({ proyectos, onEliminar,onVerDetalle }) => {
 
   return (
 
@@ -12,6 +12,7 @@ const ListaProyectos = ({ proyectos, onEliminar }) => {
           key={proyecto.id}
           proyecto={proyecto}
           onEliminar={onEliminar}
+          onVerDetalle={onVerDetalle}
         />
 
       ))}

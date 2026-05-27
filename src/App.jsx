@@ -1,99 +1,111 @@
-import { useState } from "react"
-import ListaProyectos from "./components/ListaProyectos"
+import { useState, useEffect } from "react";
+
+import "./css/style.css";
+
+import {
+  obtenerProyectos,
+  agregarProyecto,
+  eliminarProyecto,
+  buscarProyectos,
+} from "./services/proyectoService";
+
+import ListaProyectos from "./components/ListaProyectos";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import DetalleProyecto from "./components/DetalleProyecto";
+import FormularioProyecto from "./components/FormularioProyecto";
 
 function App() {
 
-  const [proyectos, setProyectos] = useState([
+  const [proyectos, setProyectos] = useState([]);
 
-    {
-      id: 1,
-      titulo: "Sistema Escolar",
-      categoria: "Educación",
-      estado: "Activo"
-    },
+  const [busqueda, setBusqueda] = useState("");
 
-    {
-      id: 2,
-      titulo: "Biblioteca Virtual",
-      categoria: "Web",
-      estado: "Pendiente"
-    }
+  const [proyectoSeleccionado, setProyectoSeleccionado] =
+    useState(null);
 
-  ])
+  useEffect(() => {
 
-  const [titulo, setTitulo] = useState("")
-  const [categoria, setCategoria] = useState("")
-  const [estado, setEstado] = useState("")
+    setProyectos(obtenerProyectos());
 
-  const eliminarProyecto = (id) => {
+  }, []);
 
-    const nuevosProyectos = proyectos.filter(
-      (proyecto) => proyecto.id !== id
-    )
+  const agregarNuevoProyecto = (nuevoProyecto) => {
 
-    setProyectos(nuevosProyectos)
+    agregarProyecto(nuevoProyecto);
 
-  }
+    setProyectos(obtenerProyectos());
 
-  const agregarProyecto = () => {
+  };
 
-    const nuevoProyecto = {
+  const Eliminar = (id) => {
 
-      id: proyectos.length + 1,
-      titulo: titulo,
-      categoria: categoria,
-      estado: estado
+    eliminarProyecto(id);
 
-    }
+    setProyectos(obtenerProyectos());
 
-    setProyectos([...proyectos, nuevoProyecto])
+  };
 
-    setTitulo("")
-    setCategoria("")
-    setEstado("")
-
-  }
+  const proyectosVisibles =
+    buscarProyectos(busqueda);
 
   return (
 
-    <div>
+    <>
 
-      <h1>Lista de Proyectos</h1>
+      <Header />
 
-      <input
-        type="text"
-        placeholder="Título"
-        value={titulo}
-        onChange={(e) => setTitulo(e.target.value)}
-      />
+      {proyectoSeleccionado ? (
 
-      <input
-        type="text"
-        placeholder="Categoría"
-        value={categoria}
-        onChange={(e) => setCategoria(e.target.value)}
-      />
+        <div className="detalleContainer">
 
-      <input
-        type="text"
-        placeholder="Estado"
-        value={estado}
-        onChange={(e) => setEstado(e.target.value)}
-      />
+          <DetalleProyecto
+            proyecto={proyectoSeleccionado}
+            onVolver={() =>
+              setProyectoSeleccionado(null)
+            }
+          />
 
-      <button onClick={agregarProyecto}>
-        Agregar Proyecto
-      </button>
+        </div>
 
-      <ListaProyectos
-        proyectos={proyectos}
-        eliminarProyecto={eliminarProyecto}
-      />
+      ) : (
 
-    </div>
+        <>
 
-  )
+          <div className="searchDiv">
+
+            <input
+              name="inputSearch"
+              type="text"
+              placeholder="Buscar proyecto"
+              className="searchInput"
+              onChange={(e) =>
+                setBusqueda(e.target.value)
+              }
+            />
+
+          </div>
+
+          <FormularioProyecto
+            onAgregarProyecto={agregarNuevoProyecto}
+          />
+
+          <ListaProyectos
+            proyectos={proyectosVisibles}
+            onEliminar={Eliminar}
+            onVerDetalle={setProyectoSeleccionado}
+          />
+
+        </>
+
+      )}
+
+      <Footer />
+
+    </>
+
+  );
 
 }
 
-export default App
+export default App;
