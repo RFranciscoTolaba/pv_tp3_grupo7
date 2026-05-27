@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Container, InputGroup, Form } from "react-bootstrap";
 
 import "./css/style.css";
 
@@ -21,8 +22,7 @@ function App() {
 
   const [busqueda, setBusqueda] = useState("");
 
-  const [proyectoSeleccionado, setProyectoSeleccionado] =
-    useState(null);
+  const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
   useEffect(() => {
 
@@ -46,8 +46,7 @@ function App() {
 
   };
 
-  const proyectosVisibles =
-    buscarProyectos(busqueda);
+  const proyectosVisibles = buscarProyectos(busqueda);
 
   return (
 
@@ -57,38 +56,33 @@ function App() {
 
       {proyectoSeleccionado ? (
 
-        <div className="detalleContainer">
+        <Container className="detalleContainer">
 
           <DetalleProyecto
             proyecto={proyectoSeleccionado}
-            onVolver={() =>
-              setProyectoSeleccionado(null)
-            }
+            onVolver={() => setProyectoSeleccionado(null)}
           />
 
-        </div>
+        </Container>
 
       ) : (
 
         <>
 
-          <div className="searchDiv">
+          <Container fluid className="d-flex justify-content-end align-items-center mt-2 pe-3">
 
-            <input
+            <Form.Control
               name="inputSearch"
               type="text"
               placeholder="Buscar proyecto"
               className="searchInput"
-              onChange={(e) =>
-                setBusqueda(e.target.value)
-              }
+              style={{ width: "250px" }}
+              onChange={(e) => setBusqueda(e.target.value)}
             />
 
-          </div>
+          </Container>
 
-          <FormularioProyecto
-            onAgregarProyecto={agregarNuevoProyecto}
-          />
+          <FormularioProyecto onAgregarProyecto={agregarNuevoProyecto} />
 
           <ListaProyectos
             proyectos={proyectosVisibles}

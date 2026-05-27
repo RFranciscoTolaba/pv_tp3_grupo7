@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Card, Form, Row, Col } from "react-bootstrap";
 
 function FormularioProyecto({ onAgregarProyecto }) {
 
@@ -25,8 +26,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
       .split(",")
       .map((item) => {
 
-        const [nombre, rol] =
-          item.split(":").map((s) => s.trim());
+        const [nombre, rol] = item.split(":").map((s) => s.trim());
 
         return {
           nombre: nombre || item.trim(),
@@ -36,200 +36,154 @@ function FormularioProyecto({ onAgregarProyecto }) {
       });
 
     const proyectoFinal = {
-
       ...nuevoProyecto,
       equipo: equipoArray,
-
     };
 
     onAgregarProyecto(proyectoFinal);
 
     setNuevoProyecto({
-
       titulo: "",
       categoria: "",
       estado: "Activo",
       descripcion: "",
-      recursos: {
-        pdf: "",
-        drive: "",
-        github: "",
-      },
+      recursos: { pdf: "", drive: "", github: "" },
       equipo: "",
-
     });
 
   };
 
   return (
 
-    <div className="registrationDiv">
+    <Card
+      className="mx-auto my-4"
+      style={{
+        maxWidth: "600px",
+        backgroundColor: "var(--bg-secondary-color)",
+        borderRadius: "var(--border-radius)",
+        color: "var(--primary-text-color)",
+        boxShadow: "var(--tarjet-shadow)",
+      }}
+    >
 
-      <h2>Cargar Nuevo Proyecto</h2>
+      <Card.Body className="p-4">
 
-      <div className="inputGroup">
-
-        <label htmlFor="title">Título:</label>
-
-        <input
-          id="title"
-          type="text"
-          placeholder="Título"
-          value={nuevoProyecto.titulo}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              titulo: e.target.value,
-            })
-          }
-        />
-
-      </div>
-
-      <div className="inputGroup">
-
-        <label htmlFor="category">Categoría:</label>
-
-        <input
-          id="category"
-          type="text"
-          placeholder="Categoría"
-          value={nuevoProyecto.categoria}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              categoria: e.target.value,
-            })
-          }
-        />
-
-      </div>
-
-      <div className="inputGroup">
-
-        <label htmlFor="status">Estado:</label>
-
-        <select
-          value={nuevoProyecto.estado}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              estado: e.target.value,
-            })
-          }
+        <Card.Title
+          as="h2"
+          className="mb-4 pb-2"
+          style={{ borderBottom: "2px solid var(--bg-button-color)" }}
         >
+          Cargar Nuevo Proyecto
+        </Card.Title>
 
-          <option value="Activo">Activo</option>
-          <option value="Pausado">Pausado</option>
-          <option value="Completado">Completado</option>
-          <option value="En revisión">En revisión</option>
+        <Form>
 
-        </select>
+          <Form.Group className="mb-3">
+            <Form.Label>Título:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Título"
+              value={nuevoProyecto.titulo}
+              onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+            />
+          </Form.Group>
 
-      </div>
+          <Form.Group className="mb-3">
+            <Form.Label>Categoría:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Categoría"
+              value={nuevoProyecto.categoria}
+              onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, categoria: e.target.value })}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+            />
+          </Form.Group>
 
-      <div className="inputGroup">
+          <Form.Group className="mb-3">
+            <Form.Label>Estado:</Form.Label>
+            <Form.Select
+              value={nuevoProyecto.estado}
+              onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+            >
+              <option value="Activo">Activo</option>
+              <option value="Pausado">Pausado</option>
+              <option value="Completado">Completado</option>
+              <option value="En revisión">En revisión</option>
+            </Form.Select>
+          </Form.Group>
 
-        <label>Descripción:</label>
+          <Form.Group className="mb-3">
+            <Form.Label>Descripción:</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={nuevoProyecto.descripcion}
+              onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, descripcion: e.target.value })}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+            />
+          </Form.Group>
 
-        <textarea
-          value={nuevoProyecto.descripcion}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              descripcion: e.target.value,
-            })
-          }
-        />
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>PDF:</Form.Label>
+                <Form.Control
+                  type="url"
+                  value={nuevoProyecto.recursos.pdf}
+                  onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, pdf: e.target.value } })}
+                  style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Drive:</Form.Label>
+                <Form.Control
+                  type="url"
+                  value={nuevoProyecto.recursos.drive}
+                  onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, drive: e.target.value } })}
+                  style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
-      </div>
+          <Form.Group className="mb-3">
+            <Form.Label>GitHub:</Form.Label>
+            <Form.Control
+              type="url"
+              value={nuevoProyecto.recursos.github}
+              onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, github: e.target.value } })}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+            />
+          </Form.Group>
 
-      <div className="inputGroup">
+          <Form.Group className="mb-4">
+            <Form.Label>Equipo:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Juan: Frontend, Ana: Backend"
+              value={nuevoProyecto.equipo}
+              onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, equipo: e.target.value })}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+            />
+          </Form.Group>
 
-        <label>PDF:</label>
+          <Button
+            variant="secondary"
+            className="btnSave w-100"
+            onClick={Agregar}
+          >
+            Agregar Proyecto
+          </Button>
 
-        <input
-          type="url"
-          value={nuevoProyecto.recursos.pdf}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              recursos: {
-                ...nuevoProyecto.recursos,
-                pdf: e.target.value,
-              },
-            })
-          }
-        />
+        </Form>
 
-      </div>
+      </Card.Body>
 
-      <div className="inputGroup">
-
-        <label>Drive:</label>
-
-        <input
-          type="url"
-          value={nuevoProyecto.recursos.drive}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              recursos: {
-                ...nuevoProyecto.recursos,
-                drive: e.target.value,
-              },
-            })
-          }
-        />
-
-      </div>
-
-      <div className="inputGroup">
-
-        <label>GitHub:</label>
-
-        <input
-          type="url"
-          value={nuevoProyecto.recursos.github}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              recursos: {
-                ...nuevoProyecto.recursos,
-                github: e.target.value,
-              },
-            })
-          }
-        />
-
-      </div>
-
-      <div className="inputGroup">
-
-        <label>Equipo:</label>
-
-        <input
-          type="text"
-          placeholder="Juan: Frontend, Ana: Backend"
-          value={nuevoProyecto.equipo}
-          onChange={(e) =>
-            setNuevoProyecto({
-              ...nuevoProyecto,
-              equipo: e.target.value,
-            })
-          }
-        />
-
-      </div>
-
-      <button
-        onClick={Agregar}
-        className="btnSave"
-      >
-        Agregar Proyecto
-      </button>
-
-    </div>
+    </Card>
 
   );
 
