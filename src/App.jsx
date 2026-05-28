@@ -27,39 +27,31 @@ function App() {
   //const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const [fechaActualizacion, setFechaActualizacion] = useState(null);
-  const estaMontado = useRef(false)
+
+  const [mostrarRegistro, setMostrarRegistro] = useState(false);
 
   useEffect(() => {
     setProyectos(obtenerProyectosDisp());
   }, []);
 
-  useEffect(() => {
-    if (!estaMontado.current) {
-      estaMontado.current = true;
-      return;
-    }
-    setFechaActualizacion(new Date());
-  }, [proyectos]);
+const agregarNuevoProyecto = (nuevoProyecto) => {
+  agregarProyecto(nuevoProyecto);
+  setProyectos(obtenerProyectosDisp());
+  
+  setFechaActualizacion(new Date()); 
+  setMostrarRegistro(true);
+};
 
-  const agregarNuevoProyecto = (nuevoProyecto) => {
-
-    agregarProyecto(nuevoProyecto);
-
-    setProyectos(obtenerProyectosDisp());
-    //setMostrarFormulario(false);
-
-  };
-
-  const Eliminar = (id) => {
-
-    eliminarProyecto(id);
-
-    setProyectos(obtenerProyectosDisp());
-    if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
-      setProyectoSeleccionado(null);
-    }
-
-  };
+const Eliminar = (id) => {
+  eliminarProyecto(id);
+  setProyectos(obtenerProyectosDisp());
+  
+  setFechaActualizacion(new Date());
+  setMostrarRegistro(true); 
+  if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
+    setProyectoSeleccionado(null);
+  }
+};
 
   const proyectosVisibles = buscarProyectos(busqueda);
 
