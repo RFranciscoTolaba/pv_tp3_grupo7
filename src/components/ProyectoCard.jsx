@@ -45,15 +45,17 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
             variant="secondary"
             size="sm"
             onClick={() => onVerDetalle(proyecto)}
+            className="btnGeneral"
           >
             Ver Detalle
           </Button>
 
           <Button
-            className="btn-delete"
-            //variant="danger"
+            
+            variant="danger"
             size="sm"
             onClick={() => onEliminar(id)}
+            className="btn-delete"
           >
             Eliminar
           </Button>

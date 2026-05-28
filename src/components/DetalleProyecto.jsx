@@ -21,7 +21,7 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
       <Card.Body>
 
         <Button
-          variant="dark"
+          variant="secondary"
           className="mb-3"
           onClick={onVolver}
         >

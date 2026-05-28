@@ -1,5 +1,5 @@
 import { useState, useEffect,useRef } from "react";
-import { Container, InputGroup, Form } from "react-bootstrap";
+import { Container, InputGroup, Form, Button } from "react-bootstrap";
 
 import "./css/style.css";
 
@@ -24,6 +24,8 @@ function App() {
 
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
+  //const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
   const [fechaActualizacion, setFechaActualizacion] = useState(null);
   const estaMontado = useRef(false)
 
@@ -44,6 +46,7 @@ function App() {
     agregarProyecto(nuevoProyecto);
 
     setProyectos(obtenerProyectosDisp());
+    //setMostrarFormulario(false);
 
   };
 
@@ -83,6 +86,14 @@ function App() {
 
           <Container fluid className="d-flex justify-content-end align-items-center mt-2 pe-3">
 
+           {/*  <Button 
+              variant={mostrarFormulario ? "danger" : "primary"}
+              onClick={() => setMostrarFormulario(!mostrarFormulario)}
+              
+            >
+              {mostrarFormulario ? "✕ Cerrar Formulario" : "➕ Añadir Proyecto"}
+            </Button> */}
+
             <Form.Control
               name="inputSearch"
               type="text"
@@ -93,6 +104,10 @@ function App() {
             />
 
           </Container>
+
+         {/*  {mostrarFormulario && (
+            <FormularioProyecto onAgregarProyecto={agregarNuevoProyecto} />
+          )} */}
 
           <FormularioProyecto onAgregarProyecto={agregarNuevoProyecto} />
 

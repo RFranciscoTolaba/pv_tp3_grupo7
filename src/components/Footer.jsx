@@ -4,7 +4,7 @@ const Footer = () => {
 
   return (
 
-    <footer style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", padding: "15px", textAlign: "center", fontSize: "18px" }}>
+    <footer className="footerPers" style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", padding: "15px", textAlign: "center", fontSize: "18px" }}>
 
       <Container>
 

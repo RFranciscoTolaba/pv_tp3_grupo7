@@ -179,7 +179,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
             className="btnSave w-100"
             onClick={Agregar}
           >
-            Agregar Proyecto
+            Agregar 
           </Button>
 
         </Form>
