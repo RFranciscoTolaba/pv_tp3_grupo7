@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { Container, InputGroup, Form } from "react-bootstrap";
+import { useState, useEffect,useRef } from "react";
+import { Container, InputGroup, Form, Button } from "react-bootstrap";
 
 import "./css/style.css";
 
 import {
-  obtenerProyectos,
+  obtenerProyectosDisp,
   agregarProyecto,
   eliminarProyecto,
   buscarProyectos,
@@ -24,17 +24,29 @@ function App() {
 
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
+  //const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+  const [fechaActualizacion, setFechaActualizacion] = useState(null);
+  const estaMontado = useRef(false)
+
   useEffect(() => {
-
-    setProyectos(obtenerProyectos());
-
+    setProyectos(obtenerProyectosDisp());
   }, []);
+
+  useEffect(() => {
+    if (!estaMontado.current) {
+      estaMontado.current = true;
+      return;
+    }
+    setFechaActualizacion(new Date());
+  }, [proyectos]);
 
   const agregarNuevoProyecto = (nuevoProyecto) => {
 
     agregarProyecto(nuevoProyecto);
 
-    setProyectos(obtenerProyectos());
+    setProyectos(obtenerProyectosDisp());
+    //setMostrarFormulario(false);
 
   };
 
@@ -42,7 +54,10 @@ function App() {
 
     eliminarProyecto(id);
 
-    setProyectos(obtenerProyectos());
+    setProyectos(obtenerProyectosDisp());
+    if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
+      setProyectoSeleccionado(null);
+    }
 
   };
 
@@ -71,6 +86,14 @@ function App() {
 
           <Container fluid className="d-flex justify-content-end align-items-center mt-2 pe-3">
 
+           {/*  <Button 
+              variant={mostrarFormulario ? "danger" : "primary"}
+              onClick={() => setMostrarFormulario(!mostrarFormulario)}
+              
+            >
+              {mostrarFormulario ? "✕ Cerrar Formulario" : "➕ Añadir Proyecto"}
+            </Button> */}
+
             <Form.Control
               name="inputSearch"
               type="text"
@@ -82,12 +105,18 @@ function App() {
 
           </Container>
 
+         {/*  {mostrarFormulario && (
+            <FormularioProyecto onAgregarProyecto={agregarNuevoProyecto} />
+          )} */}
+
           <FormularioProyecto onAgregarProyecto={agregarNuevoProyecto} />
 
           <ListaProyectos
             proyectos={proyectosVisibles}
+            //totalProyectos={proyectos.length}
             onEliminar={Eliminar}
             onVerDetalle={setProyectoSeleccionado}
+            fechaActualizacion={fechaActualizacion}
           />
 
         </>

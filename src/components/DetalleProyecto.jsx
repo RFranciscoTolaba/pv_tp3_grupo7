@@ -10,6 +10,7 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
       style={{
         backgroundColor: "var(--tarjet-primary-color)",
         border: "5px solid rgb(165, 205, 19)",
+        color:"var(--secondary-text-color)",
         borderRadius: "15px",
         padding: "10px",
         margin: "30px auto",
@@ -20,7 +21,7 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
       <Card.Body>
 
         <Button
-          variant="dark"
+          variant="secondary"
           className="mb-3"
           onClick={onVolver}
         >
@@ -87,7 +88,7 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
 
             <ListGroup.Item
               key={index}
-              style={{ backgroundColor: "transparent", borderColor: "rgba(0,0,0,0.15)" }}
+              style={{ backgroundColor: "transparent", borderColor: "rgba(0,0,0,0.15)",color:"var(--secondary-text-color)" }}
             >
               <strong>{integrante.nombre}</strong> — {integrante.rol}
             </ListGroup.Item>

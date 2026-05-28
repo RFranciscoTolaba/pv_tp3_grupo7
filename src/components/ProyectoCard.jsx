@@ -20,6 +20,7 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
         border: "4px solid rgb(165, 205, 19)",
         borderRadius: "var(--tarjet-border-radius)",
         boxShadow: "var(--tarjet-shadow)",
+        color: "var(--secondary-text-color)"
       }}
     >
 
@@ -44,14 +45,17 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
             variant="secondary"
             size="sm"
             onClick={() => onVerDetalle(proyecto)}
+            className="btnGeneral"
           >
             Ver Detalle
           </Button>
 
           <Button
+            
             variant="danger"
             size="sm"
             onClick={() => onEliminar(id)}
+            className="btn-delete"
           >
             Eliminar
           </Button>

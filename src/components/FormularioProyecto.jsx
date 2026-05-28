@@ -85,7 +85,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
               placeholder="Título"
               value={nuevoProyecto.titulo}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
+              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a"}}
             />
           </Form.Group>
 
@@ -131,6 +131,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
                 <Form.Label>PDF:</Form.Label>
                 <Form.Control
                   type="url"
+                  placeholder="URL"
                   value={nuevoProyecto.recursos.pdf}
                   onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, pdf: e.target.value } })}
                   style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
@@ -142,6 +143,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
                 <Form.Label>Drive:</Form.Label>
                 <Form.Control
                   type="url"
+                  placeholder="URL"
                   value={nuevoProyecto.recursos.drive}
                   onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, drive: e.target.value } })}
                   style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
@@ -154,6 +156,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Label>GitHub:</Form.Label>
             <Form.Control
               type="url"
+              placeholder="URL"
               value={nuevoProyecto.recursos.github}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, github: e.target.value } })}
               style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
@@ -176,7 +179,7 @@ function FormularioProyecto({ onAgregarProyecto }) {
             className="btnSave w-100"
             onClick={Agregar}
           >
-            Agregar Proyecto
+            Agregar 
           </Button>
 
         </Form>

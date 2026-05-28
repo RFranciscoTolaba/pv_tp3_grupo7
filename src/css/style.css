@@ -29,7 +29,9 @@ body {
   font-weight: 550;
   font-style: normal;
   display: grid;
+
   margin: 0px;
+
 }
 
 header {
@@ -70,7 +72,7 @@ header img {
   margin: 0;
 }
 
-.Navbar ul li a {
+.Navlink{
   display: block;
   height: 90px;
   align-content: center;
@@ -79,8 +81,8 @@ header img {
   transition: var(--transition);
 }
 
-.Navbar ul li a:link,
-.Navbar ul li a:visited {
+.Navlink:link,
+.Navlink:visited {
   background-color: var(--bg-secondary-color);
   color: rgb(240, 240, 227);
   text-align: center;
@@ -88,8 +90,8 @@ header img {
 
 }
 
-.Navbar ul li a:hover,
-.Navbar ul li a:active {
+.Navlink:hover,
+.Navlink:active {
   background-color: var(--primary-hover);
   font-size: 25px;
   text-shadow: 0 2px 6px rgb(173, 161, 148);
@@ -107,10 +109,10 @@ header img {
 }
 
 .searchInput {
-  height: 20px;
-  width: 250px;
+  height: 35px;
+  width: 280px;
   padding: 10px;
-  font-size: 15px;
+  font-size: 16px;
   border: none;
   outline: none;
   background-color: var(--bg-secondary-color); 
@@ -138,6 +140,7 @@ header img {
   object-fit: contain;
   display: block;   
 }
+
 .registrationDiv{
     max-width: 600px;
     margin: 30px ;
@@ -251,19 +254,14 @@ h2 {
   width: 100%;
   margin-top: 15px;
 }
+
 .btn {
-    background-color: rgb(97, 97, 97);
-    color: var(--primary-text-color);
-    padding: 10px 15px;
-    border: 1px solid rgb(163, 163, 163);
-    font-size: 15px;
+
     border-radius: 13px;
-    font-weight: bold;
-    text-decoration: none;
     transition: var(--transition);
+ 
 
 }
-
 .btn:link,
 .btn:visited {
   display: inline-block;
@@ -275,6 +273,35 @@ h2 {
 
 .btn:hover,
 .btn:active {
+  /*background-color: rgb(153, 153, 153);*/
+  color: rgb(255, 255, 255);
+  box-shadow: 0 3px 3px rgb(69, 83, 16);
+  transform: scale(1.08);
+}
+.btnGeneral {
+    /*background-color: rgb(97, 97, 97);*/
+    color: var(--primary-text-color);
+    padding: 10px 15px;
+    border: 1px solid rgb(163, 163, 163);
+    font-size: 15px;
+    border-radius: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: var(--transition);
+
+}
+
+.btnGeneral:link,
+.btnGeneral:visited {
+  display: inline-block;
+  color: var(--button-text-color);
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 13px;
+}
+
+.btnGeneral:hover,
+.btnGeneral:active {
   background-color: rgb(153, 153, 153);
   color: rgb(255, 255, 255);
   box-shadow: 0 3px 3px rgb(69, 83, 16);
@@ -300,7 +327,7 @@ h2 {
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 15px;
-}
+}/*
 ._button {
   text-decoration: none; 
   border-radius: var(--border-radius);
@@ -326,7 +353,7 @@ h2 {
   transform: scale(1.08);
 }
 
-
+*/
 .btn-delete {
   display: flex;
 
@@ -360,4 +387,13 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 18px;
+  /*margin-top: auto !important; */
 }
+
+.registro-actividad{
+  display: flex;
+  justify-content: left;
+  padding: 35px;
+  
+}
+
