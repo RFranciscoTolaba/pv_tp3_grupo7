@@ -138,6 +138,7 @@ header img {
   object-fit: contain;
   display: block;   
 }
+
 .registrationDiv{
     max-width: 600px;
     margin: 30px ;
@@ -251,6 +252,7 @@ h2 {
   width: 100%;
   margin-top: 15px;
 }
+
 .btn {
     background-color: rgb(97, 97, 97);
     color: var(--primary-text-color);
@@ -300,7 +302,7 @@ h2 {
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 15px;
-}
+}/*
 ._button {
   text-decoration: none; 
   border-radius: var(--border-radius);
@@ -352,7 +354,7 @@ h2 {
   color: var(--primary-text-color);
   box-shadow: 0 3px 3px rgb(69, 83, 16);
   transform: scale(1.08);
-}
+}*/
 
 footer {
   background-color: var(--bg-secondary-color);
@@ -361,3 +363,11 @@ footer {
   padding: 15px;
   font-size: 18px;
 }
+
+.registro-actividad{
+  display: flex;
+  justify-content: left;
+  padding-left: 30px;
+  
+}
+

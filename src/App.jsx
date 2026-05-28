@@ -43,6 +43,9 @@ function App() {
     eliminarProyecto(id);
 
     setProyectos(obtenerProyectos());
+    if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
+      setProyectoSeleccionado(null);
+    }
 
   };
 
@@ -86,6 +89,7 @@ function App() {
 
           <ListaProyectos
             proyectos={proyectosVisibles}
+            totalProyectos={proyectos.length}
             onEliminar={Eliminar}
             onVerDetalle={setProyectoSeleccionado}
           />
