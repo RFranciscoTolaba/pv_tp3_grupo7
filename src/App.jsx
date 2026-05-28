@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { Container, InputGroup, Form } from "react-bootstrap";
 
 import "./css/style.css";
 
 import {
-  obtenerProyectos,
+  obtenerProyectosDisp,
   agregarProyecto,
   eliminarProyecto,
   buscarProyectos,
@@ -24,17 +24,26 @@ function App() {
 
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
+  const [fechaActualizacion, setFechaActualizacion] = useState(null);
+  const estaMontado = useRef(false)
+
   useEffect(() => {
-
-    setProyectos(obtenerProyectos());
-
+    setProyectos(obtenerProyectosDisp());
   }, []);
+
+  useEffect(() => {
+    if (!estaMontado.current) {
+      estaMontado.current = true;
+      return;
+    }
+    setFechaActualizacion(new Date());
+  }, [proyectos]);
 
   const agregarNuevoProyecto = (nuevoProyecto) => {
 
     agregarProyecto(nuevoProyecto);
 
-    setProyectos(obtenerProyectos());
+    setProyectos(obtenerProyectosDisp());
 
   };
 
@@ -42,7 +51,7 @@ function App() {
 
     eliminarProyecto(id);
 
-    setProyectos(obtenerProyectos());
+    setProyectos(obtenerProyectosDisp());
     if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
       setProyectoSeleccionado(null);
     }
@@ -89,9 +98,10 @@ function App() {
 
           <ListaProyectos
             proyectos={proyectosVisibles}
-            totalProyectos={proyectos.length}
+            //totalProyectos={proyectos.length}
             onEliminar={Eliminar}
             onVerDetalle={setProyectoSeleccionado}
+            fechaActualizacion={fechaActualizacion}
           />
 
         </>

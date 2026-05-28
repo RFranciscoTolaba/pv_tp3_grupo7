@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+//import { useState, useEffect, useRef } from "react";
 
 import ProyectoCard from "./ProyectoCard";
 
@@ -6,26 +6,16 @@ import RegistroActividad from "./RegistroActividad";
 
 const ListaProyectos = ({
   proyectos,
-  totalProyectos,
+  /*totalProyectos,*/
   onEliminar,
   onVerDetalle,
+  fechaActualizacion,
 }) => {
-  const [fechaActualizacion, setFechaActualizacion] = useState(null);
 
-  const estaMontado = useRef(false);
-
-  useEffect(() => {
-    if (!estaMontado.current) {
-      estaMontado.current = true;
-      return;
-    }
-
-    setFechaActualizacion(new Date());
-  }, [totalProyectos]);
 
   return (
     <>
-      {fechaActualizacion && <RegistroActividad fecha={fechaActualizacion} />}
+      {fechaActualizacion && (<RegistroActividad fecha={fechaActualizacion} />)}
       <section className="tarjet">
         {proyectos.map((proyecto) => (
           <ProyectoCard
@@ -35,6 +25,7 @@ const ListaProyectos = ({
             onVerDetalle={onVerDetalle}
           />
         ))}
+        
       </section>
     </>
   );

@@ -6,7 +6,7 @@ const Nav = () => {
 
     <BsNav className="ms-auto">
 
-      <BsNav.Link href="/" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
+      <BsNav.Link href="#" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
         Inicio
       </BsNav.Link>
 
