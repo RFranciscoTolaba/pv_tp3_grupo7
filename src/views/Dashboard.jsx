@@ -1,12 +1,4 @@
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardSubtitle,
-  CardTitle,
-} from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 const Dashboard = () => {
   return (
