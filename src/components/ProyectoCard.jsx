@@ -11,6 +11,13 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
 
   const { titulo, categoria, estado, id } = proyecto;
 
+  const estadoVariant = {
+    Activo: "success",
+    Pausado: "warning",
+    Completado: "primary",
+    "En revisión": "info",
+  };
+
   return (
 
     <Card

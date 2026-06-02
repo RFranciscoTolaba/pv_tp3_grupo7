@@ -1,32 +1,35 @@
-import { Nav as BsNav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-
   return (
+    <nav className="Navbar">
+      <ul>
+        <li>
+          <NavLink to="/" className="Navlink">
+            Inicio
+          </NavLink>
+        </li>
 
-    <BsNav className="Navbar ms-auto">
+        <li>
+          <NavLink to="/proyectos" className="Navlink">
+            Proyectos
+          </NavLink>
+        </li>
 
-      <BsNav.Link href="#" className="Navlink" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" } }>
-        Inicio
-      </BsNav.Link>
+        <li>
+          <NavLink to="/detalle" className="Navlink">
+            Detalle
+          </NavLink>
+        </li>
 
-      <BsNav.Link href="#" className="Navlink" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
-        Proyectos
-      </BsNav.Link>
-
-      <BsNav.Link href="#" className="Navlink" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
-        Detalle
-      </BsNav.Link>
-
-      <BsNav.Link href="#" className="Navlink" style={{ color: "rgb(240, 240, 227)", fontSize: "20px", padding: "0 20px" }}>
-        Perfil
-      </BsNav.Link>
-
-    </BsNav>
-
+        <li>
+          <NavLink to="/perfil" className="Navlink">
+            Perfil
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
   );
-
 };
 
 export default Nav;
-
