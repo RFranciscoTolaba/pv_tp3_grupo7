@@ -1,6 +1,7 @@
 import { Button, Card, ListGroup, Stack } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const DetalleProyecto = ({ proyecto, onVolver }) => {
+const DetalleProyecto = ({ proyecto }) => {
 
   const { titulo, descripcion, recursos, equipo } = proyecto;
 
@@ -10,7 +11,7 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
       style={{
         backgroundColor: "var(--tarjet-primary-color)",
         border: "5px solid rgb(165, 205, 19)",
-        color:"var(--secondary-text-color)",
+        color: "var(--secondary-text-color)",
         borderRadius: "15px",
         padding: "10px",
         margin: "30px auto",
@@ -20,19 +21,29 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
 
       <Card.Body>
 
-        <Button
-          variant="secondary"
-          className="mb-3"
-          onClick={onVolver}
+        <Link
+          to="/proyectos"
+          style={{ textDecoration: "none" }}
         >
-          ← Volver al listado
-        </Button>
+          <Button
+            variant="secondary"
+            className="mb-3"
+          >
+            ← Volver al listado
+          </Button>
+        </Link>
 
-        <Card.Title as="h2" style={{ textDecoration: "underline" }}>
+        <Card.Title
+          as="h2"
+          style={{ textDecoration: "underline" }}
+        >
           {titulo}
         </Card.Title>
 
-        <Card.Subtitle as="h3" className="mt-4 mb-2">
+        <Card.Subtitle
+          as="h3"
+          className="mt-4 mb-2"
+        >
           Descripción del Proyecto
         </Card.Subtitle>
 
@@ -40,11 +51,18 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
           <p key={index}>{parrafo}</p>
         ))}
 
-        <Card.Subtitle as="h3" className="mt-4 mb-3">
+        <Card.Subtitle
+          as="h3"
+          className="mt-4 mb-3"
+        >
           Recursos
         </Card.Subtitle>
 
-        <Stack direction="horizontal" gap={2} className="flex-wrap">
+        <Stack
+          direction="horizontal"
+          gap={2}
+          className="flex-wrap"
+        >
 
           <Button
             variant="dark"
@@ -78,7 +96,10 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
 
         </Stack>
 
-        <Card.Subtitle as="h3" className="mt-4 mb-2">
+        <Card.Subtitle
+          as="h3"
+          className="mt-4 mb-2"
+        >
           Equipo
         </Card.Subtitle>
 
@@ -88,7 +109,11 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
 
             <ListGroup.Item
               key={index}
-              style={{ backgroundColor: "transparent", borderColor: "rgba(0,0,0,0.15)",color:"var(--secondary-text-color)" }}
+              style={{
+                backgroundColor: "transparent",
+                borderColor: "rgba(0,0,0,0.15)",
+                color: "var(--secondary-text-color)"
+              }}
             >
               <strong>{integrante.nombre}</strong> — {integrante.rol}
             </ListGroup.Item>
@@ -106,4 +131,3 @@ const DetalleProyecto = ({ proyecto, onVolver }) => {
 };
 
 export default DetalleProyecto;
-
