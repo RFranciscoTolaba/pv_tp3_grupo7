@@ -1,4 +1,5 @@
 import { Card, Badge, Button, Stack } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const estadoVariant = {
   "Activo": "success",
@@ -48,17 +49,21 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
 
         <Stack direction="horizontal" gap={2} className="justify-content-between mt-3">
 
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => onVerDetalle(proyecto)}
-            className="btnGeneral"
+          <Link
+            to={`/proyectos/${id}`}
+            style={{ textDecoration: "none" }}
           >
-            Ver Detalle
-          </Button>
+            <Button
+              variant="secondary"
+              size="sm"
+              className="btnGeneral"
+            >
+              Ver Detalle
+            </Button>
+          </Link>
 
           <Button
-            
+
             variant="danger"
             size="sm"
             onClick={() => onEliminar(id)}

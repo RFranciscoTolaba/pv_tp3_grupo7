@@ -35,6 +35,12 @@ export const buscarProyectos = (termino) => {
     );
 };
 
+export const obtenerProyectoPorId = (id) => {
+    return proyectos.find(
+        p => p.id === Number(id)
+    );
+};
+
 /*
 export const eliminarProyecto = (id) => {
     proyectos = proyectos.filter(p => p.id !== id);
