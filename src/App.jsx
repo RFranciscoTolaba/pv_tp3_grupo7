@@ -52,7 +52,7 @@ const Eliminar = (id) => {
 
   const proyectosVisibles = buscarProyectos(busqueda);
 return (
-    <div className="app">
+    <div className="app-wrapp">
       <Header />
 
       <main className="flex-grow-1 my-4">
@@ -70,7 +70,7 @@ return (
                     type="text"
                     placeholder="Buscar proyecto"
                     className="searchInput"
-                    style={{ width: "280px" }}
+                    //style={{ width: "280px" }}
                     onChange={(e) => setBusqueda(e.target.value)}
                   />
                 </Container>

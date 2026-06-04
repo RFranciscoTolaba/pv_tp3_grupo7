@@ -55,23 +55,13 @@ function FormularioProyecto({ onAgregarProyecto }) {
 
   return (
 
-    <Card
-      className="mx-auto my-4"
-      style={{
-        maxWidth: "600px",
-        backgroundColor: "var(--bg-secondary-color)",
-        borderRadius: "var(--border-radius)",
-        color: "var(--primary-text-color)",
-        boxShadow: "var(--tarjet-shadow)",
-      }}
-    >
+    <Card className="form-add-prj mx-auto my-4">
 
       <Card.Body className="p-4">
 
         <Card.Title
           as="h2"
           className="mb-4 pb-2"
-          style={{ borderBottom: "2px solid var(--bg-button-color)" }}
         >
           Cargar Nuevo Proyecto
         </Card.Title>
@@ -83,9 +73,9 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Control
               type="text"
               placeholder="Título"
+              className="input-text-form"
               value={nuevoProyecto.titulo}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, titulo: e.target.value })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a"}}
             />
           </Form.Group>
 
@@ -94,9 +84,9 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Control
               type="text"
               placeholder="Categoría"
+              className="input-text-form"
               value={nuevoProyecto.categoria}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, categoria: e.target.value })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
             />
           </Form.Group>
 
@@ -104,8 +94,8 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Label>Estado:</Form.Label>
             <Form.Select
               value={nuevoProyecto.estado}
+              className="input-text-form"
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, estado: e.target.value })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
             >
               <option value="Activo">Activo</option>
               <option value="Pausado">Pausado</option>
@@ -119,9 +109,9 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Control
               as="textarea"
               rows={3}
+              className="input-text-form"
               value={nuevoProyecto.descripcion}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, descripcion: e.target.value })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
             />
           </Form.Group>
 
@@ -132,9 +122,9 @@ function FormularioProyecto({ onAgregarProyecto }) {
                 <Form.Control
                   type="url"
                   placeholder="URL"
+                  className="input-text-form"
                   value={nuevoProyecto.recursos.pdf}
                   onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, pdf: e.target.value } })}
-                  style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
                 />
               </Form.Group>
             </Col>
@@ -144,9 +134,9 @@ function FormularioProyecto({ onAgregarProyecto }) {
                 <Form.Control
                   type="url"
                   placeholder="URL"
+                  className="input-text-form"
                   value={nuevoProyecto.recursos.drive}
                   onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, drive: e.target.value } })}
-                  style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
                 />
               </Form.Group>
             </Col>
@@ -157,9 +147,9 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Control
               type="url"
               placeholder="URL"
+              className="input-text-form"
               value={nuevoProyecto.recursos.github}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, recursos: { ...nuevoProyecto.recursos, github: e.target.value } })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
             />
           </Form.Group>
 
@@ -168,15 +158,15 @@ function FormularioProyecto({ onAgregarProyecto }) {
             <Form.Control
               type="text"
               placeholder="Juan: Frontend, Ana: Backend"
+              className="input-text-form"
               value={nuevoProyecto.equipo}
               onChange={(e) => setNuevoProyecto({ ...nuevoProyecto, equipo: e.target.value })}
-              style={{ backgroundColor: "var(--bg-secondary-color)", color: "var(--primary-text-color)", border: "2px solid #5b5a5a" }}
             />
           </Form.Group>
 
           <Button
             variant="secondary"
-            className="btnSave w-100"
+            className="btnSave w-50"
             onClick={Agregar}
           >
             Agregar 
@@ -193,4 +183,5 @@ function FormularioProyecto({ onAgregarProyecto }) {
 }
 
 export default FormularioProyecto;
+
 
