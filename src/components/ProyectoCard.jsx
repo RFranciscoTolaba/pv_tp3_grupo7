@@ -46,7 +46,7 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
             <Button
               variant="secondary"
               size="sm"
-              className="btnGeneral"
+              className="btn-detail"
             >
               Ver Detalle
             </Button>
@@ -73,89 +73,3 @@ const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
 };
 
 export default ProyectoCard;
-
-/* import { Card, Badge, Button, Stack } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
-const estadoVariant = {
-  "Activo": "success",
-  "Pausado": "warning",
-  "Completado": "primary",
-  "En revisión": "info",
-};
-
-const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
-
-  const { titulo, categoria, estado, id } = proyecto;
-
-  const estadoVariant = {
-    Activo: "success",
-    Pausado: "warning",
-    Completado: "primary",
-    "En revisión": "info",
-  };
-
-  return (
-
-    <Card
-      style={{
-        width: "320px",
-        backgroundColor: "var(--tarjet-primary-color)",
-        border: "4px solid rgb(165, 205, 19)",
-        borderRadius: "var(--tarjet-border-radius)",
-        boxShadow: "var(--tarjet-shadow)",
-        color: "var(--secondary-text-color)"
-      }}
-    >
-
-      <Card.Body className="text-center">
-
-        <Card.Title style={{ textDecoration: "underline", fontSize: "25px" }}>
-          {titulo}
-        </Card.Title>
-
-        <Card.Text>
-          <strong>Categoría:</strong> {categoria}
-        </Card.Text>
-
-        <Card.Text>
-          <strong>Estado:</strong>{" "}
-          <Badge bg={estadoVariant[estado] ?? "secondary"}>{estado}</Badge>
-        </Card.Text>
-
-        <Stack direction="horizontal" gap={2} className="justify-content-between mt-3">
-
-          <Link
-            to={`/proyectos/${id}`}
-            style={{ textDecoration: "none" }}
-          >
-            <Button
-              variant="secondary"
-              size="sm"
-              className="btnGeneral"
-            >
-              Ver Detalle
-            </Button>
-          </Link>
-
-          <Button
-
-            variant="danger"
-            size="sm"
-            onClick={() => onEliminar(id)}
-            className="btn-delete"
-          >
-            Eliminar
-          </Button>
-
-        </Stack>
-
-      </Card.Body>
-
-    </Card>
-
-  );
-
-};
-
-export default ProyectoCard; */
