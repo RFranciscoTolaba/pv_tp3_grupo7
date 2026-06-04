@@ -6,7 +6,7 @@ const Header = () => {
 
   return (
 
-    <Navbar style={{ backgroundColor: "var(--bg-secondary-color)" }} sticky="top" expand="md">
+    <Navbar expand="md" sticky="top">
 
       <Container fluid>
 
@@ -15,10 +15,10 @@ const Header = () => {
           <img
             src={logo}
             alt="Logo equipo"
-            style={{ width: "60px", height: "auto", objectFit: "contain" }}
+            className="header-logo "
           />
 
-          <span style={{ color: "var(--primary-text-color)", fontSize: "35px", fontWeight: "bold" }}>
+          <span className="header-title">
             Grupo 7
           </span>
 
@@ -35,4 +35,3 @@ const Header = () => {
 };
 
 export default Header;
-

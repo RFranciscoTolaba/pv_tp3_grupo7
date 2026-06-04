@@ -1,4 +1,3 @@
-//import { useState, useEffect, useRef } from "react";
 
 import ProyectoCard from "./ProyectoCard";
 
@@ -6,7 +5,6 @@ import RegistroActividad from "./RegistroActividad";
 
 const ListaProyectos = ({
   proyectos,
-  /*totalProyectos,*/
   onEliminar,
   onVerDetalle,
   fechaActualizacion,
@@ -16,7 +14,7 @@ const ListaProyectos = ({
   return (
     <>
       {fechaActualizacion && (<RegistroActividad fecha={fechaActualizacion} />)}
-      <section className="tarjet">
+      <section className="list-projects">
         {proyectos.map((proyecto) => (
           <ProyectoCard
             key={proyecto.id}
