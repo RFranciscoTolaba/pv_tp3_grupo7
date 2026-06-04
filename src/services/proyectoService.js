@@ -41,8 +41,3 @@ export const obtenerProyectoPorId = (id) => {
     );
 };
 
-/*
-export const eliminarProyecto = (id) => {
-    proyectos = proyectos.filter(p => p.id !== id);
-    return id;
-};*/

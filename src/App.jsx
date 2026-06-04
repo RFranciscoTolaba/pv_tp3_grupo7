@@ -70,7 +70,6 @@ return (
                     type="text"
                     placeholder="Buscar proyecto"
                     className="searchInput"
-                    //style={{ width: "280px" }}
                     onChange={(e) => setBusqueda(e.target.value)}
                   />
                 </Container>
