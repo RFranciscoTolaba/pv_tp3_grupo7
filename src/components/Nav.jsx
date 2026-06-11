@@ -38,12 +38,6 @@ const Nav = () => {
             </li>
 
             <li>
-              <span className="header-Navlink">
-                {usuarioActivo.nombre} ({usuarioActivo.rol})
-              </span>
-            </li>
-
-            <li>
               <span
                 className="header-Navlink"
                 onClick={cerrarSesion}
@@ -52,7 +46,6 @@ const Nav = () => {
                 Cerrar sesión
               </span>
             </li>
-
           </>
 
         )}
